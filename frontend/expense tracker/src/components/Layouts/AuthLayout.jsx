@@ -28,7 +28,8 @@ const AuthLayout = ({ children }) => {
             color="bg-purple-600"
           />
         </div>
-
+        
+ {/* image card */}
         {/* Image Card */}
         <img
           src={card2}
