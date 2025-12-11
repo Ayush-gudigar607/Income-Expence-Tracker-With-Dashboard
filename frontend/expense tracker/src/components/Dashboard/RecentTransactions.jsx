@@ -1,0 +1,34 @@
+import React from 'react'
+import { LuArrowRight } from 'react-icons/lu'
+import momment from 'moment'
+import TransactionInfoCard from '../Cards/TransactionInfoCard.jsx';
+
+const RecentTransactions = ({transactions,onSeeMore}) => {
+  return (
+    <div className='card'>
+        <div className='flex items-center justify-between'>
+            <h5 className='text-lg'>Recent Transactions</h5>
+            <button className='card-btn' onClick={onSeeMore}>See All <LuArrowRight className='text-base' /></button>
+        </div>
+        <div className='mt-6'>
+            {transactions?.slice(0,5).map((item)=>(
+                <TransactionInfoCard
+                    key={item._id}
+                    title={item.type === 'expence' ? item.category : item.source}
+                    icon={item.icon}
+                    date={momment(item.date).format("DD MMM, YYYY")}
+                    amount={item.amount}
+                    type={item.type}
+                    hideDeleteBtn
+                />
+            ))}
+        </div>
+        <div className='mt-4 flex flex-col gap-4'>  
+        </div>
+
+
+    </div>
+  )
+}
+
+export default RecentTransactions
